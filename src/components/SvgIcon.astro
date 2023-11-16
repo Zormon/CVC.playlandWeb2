@@ -1,0 +1,21 @@
+---
+export interface Props {
+	name: string
+	size?: number
+}
+
+const { name, size = 50 } = Astro.props
+let path = ''
+
+try {
+	const { default: pathImport } = await import(`../img/icons/${name}.path?raw`)
+	path = pathImport
+} catch (error) {
+	const { default: pathImport } = await import(`../img/icons/_err.path?raw`)
+	path = pathImport
+}
+---
+
+<svg viewBox="0 0 500 500" role="img" fill="currentColor" height={size}>
+	<Fragment set:html={path} />
+</svg>

@@ -1,0 +1,131 @@
+---
+import { Icon } from 'astro-icon'
+import { Picture } from 'astro:assets'
+
+import Layout from '@src/layouts/SectionLayout.astro'
+import Block from '@src/components/SectionBlock.astro'
+
+import pic1 from '@images/sobre-playland/porque.webp'
+import pic2 from '@images/sobre-playland/desarrollo1.webp'
+import pic3 from '@images/sobre-playland/desarrollo2.webp'
+---
+
+<Layout lang="es" title="Sobre Playland">
+	<h1 class="brush-green mb-16 font-header text-4xl font-bold uppercase">Sobre Playland</h1>
+
+	<div class="mx-4">
+		<div class="mx-auto max-w-3xl rounded-lg bg-slate-200 p-2 text-center uppercase">
+			<p><em>Si tu hijo tuviera dinero... ¿crees que no compraría tu tiempo?</em></p>
+			<p class="my-4 font-header text-xl font-bold"><strong>¡La familia no es algo importante, lo es todo!</strong></p>
+		</div>
+	</div>
+
+	<Block title="¿Por qué Playland?" color="blue" img={pic1}>
+		<p>
+			Hoy en día, existe mucha carencia en el sector del ocio familiar, los avances tecnológicos y el exceso de trabajo no han hecho más que disminuir los momentos en familia. Para nosotros la unidad
+			familiar es indispensable.
+		</p>
+		<p>Es por eso que Playland Gran Canaria fue creada, para ayudar a las familias o amigos a crear momentos inolvidables.</p>
+		<p>
+			Contamos con un gran equipo comprometido y responsable que se esfuerza cada vez más en sacar sonrisas y momentos gratos. Por otro lado, disponemos de diversas atracciones para toda la familia
+			desde los más pequeños hasta para los más grandes, así que no te preocupes, que la edad no será un impedimento para disfrutar de cada instante.
+		</p>
+		<p>En cualquiera de los casos nuestro objetivo siempre será brindar un concepto de unión familiar.</p>
+		<p>Recuerda que la familia no es algo importante, lo es todo, y los momentos compartidos nunca será tiempo perdido.</p>
+	</Block>
+
+	<Block title="Desarrollo de playland" color="green" clean>
+		<p>
+			<Icon class="mr-2 inline h-8 text-pink-600" name="ph:star-fill" />
+			<span>
+				Hemos creado un concepto de competición familiar, en el cual padre, madre o acompañante, junto a un menor forman un equipo. Para poder participar con igualdad hemos formado diferentes niveles
+				de edad como si de ligas profesionales se trataran. La base de edad será referenciada según el niño.
+			</span>
+		</p>
+		<p>
+			<Icon class="mr-2 inline h-8 text-red-600" name="ph:star-fill" />
+			<span>
+				Mediante las diferentes competiciones, se puntuará según tiempos o victorias, participando en una liga a nivel local durante todo el periodo del evento. Se realizarán en los parques más
+				importantes de nuestra isla, con rotación mensual durante los 6 meses del evento. Habrá premios mensuales, obsequios por asistencia y un gran premio final para los ganadores del evento en cada
+				categoría. Con ello aseguramos el seguimiento del evento desde el inicio hasta el final.
+			</span>
+		</p>
+		<p>
+			<Icon class="mr-2 inline h-8 text-green-600" name="ph:star-fill" />
+			<span>
+				Habrá una website de seguimiento y perfil en redes sociales para la promoción del evento, las cuales estarán promocionadas mediante un community manager que actualizará semanalmente todos los
+				contenidos y sorpresas que esperarán para el siguiente evento.
+			</span>
+		</p>
+		<p>
+			<Icon class="mr-2 inline h-8 text-blue-600" name="ph:star-fill" />
+			<span>
+				Todas las marcas que participen podrán desarrollar acciones comerciales con nuestra empresa mediante los diferentes soportes publicitarios propuestos o nuevos que se pueden añadir (no incluido
+				en precios) podrán hacer uso de nuestros monitores o azafatas para personalizar sus atracciones y gestionar la acción con el usuario.
+			</span>
+		</p>
+	</Block>
+
+	<section class="mx-4 my-10 lg:mx-24">
+		<div class="flex flex-col gap-4 md:flex-row">
+			<Picture src={pic2} alt="Desarrollo 1" height="500" formats={['avif', 'webp']} />
+			<Picture src={pic3} alt="Desarrollo 2" height="500" formats={['avif', 'webp']} />
+		</div>
+		<ul class="mx-auto my-6 flex list-none flex-col justify-between gap-4 md:flex-row">
+			<li class="rounded-xl bg-green-600 p-4 text-white">
+				<Icon class="mr-2 inline h-8" name="healthicons:child-care" />
+				<span>Seriedad y responsabilidad</span>
+			</li>
+			<li class="rounded-xl bg-orange-600 p-4 text-white">
+				<Icon class="mr-2 inline h-8" name="zondicons:shield" />
+				<span>Seguro de responsabilidad civil</span>
+			</li>
+			<li class="rounded-xl bg-yellow-600 p-4 text-white">
+				<Icon class="mr-2 inline h-8" name="mdi:encryption-secure" />
+				<span>Homologaciones</span>
+			</li>
+		</ul>
+	</section>
+
+	<Block title="Talleres y servicio de bebeteca" color="pink">
+		<p>
+			Si tienes un bebé entre la edad comprendida de 0-3 años, es importante que busques oportunidades donde se pueda divertir, ya que el juego es algo indispensable para la salud y desarrollo de los
+			pequeños.
+		</p>
+		<p>Actualmente el tiempo que tienen los niños para jugar ha estado disminuyéndose, y la realidad es que los niños necesitan del compartir familiar.</p>
+		<p>
+			En Playland nos encargamos del disfrute de cada miembro de la familia, por eso contamos con servicio de Bebeteca. Aquí creamos una zona idónea con un gran recinto hinchable lleno de juegos y
+			juguetes para bebés.
+		</p>
+		<p>Por otro lado tambien disponemos de talleres de manualidades, pintacaras o globoflexia.</p>
+		<p>A los niños les encanta este espacio dedicado a ellos, donde pueden familiarizarse con otros. Así que estas actividades infantiles pueden ser una gran opción para los más pequeños.</p>
+	</Block>
+
+	<section class="m-4 bg-orange-200 p-8 lg:mx-20">
+		<header class="mb-6 text-center font-header text-3xl">Historia de playland</header>
+		<blockquote class="font-script text-2xl font-bold">
+			<p>
+				El papá de Alberto era un hombre importantísimo y muy ocupado que trabajaba tantas horas, que a menudo debía trabajar los fines de semana. Un domingo Alberto se despertó antes de tiempo, y al
+				escuchar que su papá abría la puerta de la calle para salir hacia la oficina, corrió a preguntarle:
+			</p>
+			<p>- ¿Por qué tienes que ir hoy a trabajar, papi? Podríamos jugar juntos...</p>
+			<p>- No puedo. Tengo unos asuntos muy importantes que resolver.</p>
+			<p>- ¿Y por qué son tan importantes papi?</p>
+			<p>- Pues porque sí salen bien, serán un gran negocio para la empresa.</p>
+			<p>- ¿Y por qué será un gran negocio</p>
+			<p>- Pues porque la empresa ganará mucho dinero y a mí es posible que me asciendan.</p>
+			<p>- ¿Y porque quieres que te asciendan?</p>
+			<p>- Pues para tener un trabajo mejor y ganar más dinero.</p>
+			<p>- ¡Que bien! Y cuando tengas un trabajo mejor, ¿podrás jugar más conmigo? El papá de Alberto quedó pensativo, así que el niño siguió con sus preguntas.</p>
+			<p>- ¿Y por qué necesitas ganar más dinero?</p>
+			<p>- Pues para tener una casa mejor y más grande, y para que tú puedas tener más cosas.</p>
+			<p>- ¿Y para que queremos una casa más grande? ¿Para guardar todas esas cosas nuevas?</p>
+			<p>- No hijo, porque con una casa más grande estaremos más a gusto y podremos hacer más cosas.</p>
+			<p>Alberto dudó un momento y sonrió.</p>
+			<p>- ¿Podremos hacer más cosas juntos? ¡ Estupendo! Entonces vete rápido. Yo esperaré los años que haga falta hasta que tengamos una casa más grande.</p>
+			<p>Al oír esto, el papá de Alberto cerró la puerta sin salir. Alberto crecía muy rápido, y su papá sabía que no le esperaría tanto. Así que se quitó la</p>
+			<p>chaqueta, dejó el ordenador y la agenda, y mientras se sentaba a jugar con Alberto tan sorprendido como encantado dijo:</p>
+			<p>- Creo que el ascenso y la casa nueva podrán esperar algunos años.</p>
+		</blockquote>
+	</section>
+</Layout>

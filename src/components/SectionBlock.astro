@@ -1,0 +1,37 @@
+---
+import type { Color } from '@src/types.d'
+import { twColorUtils as colors } from '@src/types.d'
+import { Picture } from 'astro:assets'
+
+interface Props {
+	title: string
+	img?: ImageMetadata | null
+	color?: Color
+	clean?: boolean
+}
+
+const { title, color = 'white', img = null, clean = false } = Astro.props
+const tone = colors[color]
+---
+
+<section class="my-10">
+	<h1 class:list={['p-4 text-center font-header text-3xl uppercase', clean ? tone.textDark : [tone.bgDark, tone.text]]}>{title}</h1>
+	<div class:list={['flex w-full flex-col place-items-center gap-6 p-4 md:flex-row', !clean ? tone.bg : '']}>
+		{
+			img ? (
+				<>
+					<div class="basis-1/2">
+						<Picture src={img} alt={'Portada ' + title} formats={['avif', 'webp']} />
+					</div>
+					<div class="prose max-w-none basis-1/2">
+						<slot />
+					</div>
+				</>
+			) : (
+				<div class="prose max-w-none">
+					<slot />
+				</div>
+			)
+		}
+	</div>
+</section>

@@ -1,0 +1,79 @@
+---
+import type { Color } from '@src/types.d'
+
+interface Props {
+	slug: string
+	title: string
+	location: string
+	img: Promise<{ default: ImageMetadata }>
+	geo: {
+		lat: number | null
+		lng: number | null
+	}
+	date: {
+		from: Date
+		to: Date
+	}
+	color: Color
+}
+
+import { Picture } from 'astro:assets'
+import Layout from './SectionLayout.astro'
+import Icon from 'astro-icon'
+
+const { slug, title, location, img, geo, date, color } = Astro.props
+---
+
+<Layout>
+	<h1 transition:name={`title-${title}`} class:list={['mb-12 font-header text-4xl font-bold uppercase', `brush-${color}`]}>{title}</h1>
+
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		<div transition:name={`poster-${title}`}><Picture src={img} alt={title} formats={['avif', 'webp']} /></div>
+		<div class="flex flex-col gap-4">
+			<div class="flex flex-row gap-4">
+				<a class="mx-auto rounded-lg bg-pink-700 p-4 text-white transition hover:scale-110 hover:shadow-lg" href={`/fotos/${slug}`}>
+					<Icon name="ic:baseline-camera" />
+					<span>Fotos</span>
+				</a>
+
+				<div transition:name={`location-${title}`} class="flex-1 rounded-md border-2 border-lime-300 bg-lime-100 p-2">
+					<h2 class="mb-2 font-header text-2xl font-bold uppercase">
+						<Icon class="mr-1 inline h-6" name="mdi:location" />
+						<span>Lugar</span>
+					</h2>
+					<p>{location}</p>
+				</div>
+
+				<div transition:name={`date-${title}`} class="flex-1 rounded-md border-2 border-cyan-300 bg-cyan-100 p-2">
+					<h2 class="mb-2 font-header text-2xl font-bold uppercase">
+						<Icon class="mr-1 inline h-6" name="ic:baseline-date-range" />
+						<span>Fecha</span>
+					</h2>
+					{
+						date.from.toLocaleDateString() === date.to.toLocaleDateString() ? (
+							<p>{date.from.toLocaleDateString()}</p>
+						) : (
+							<p>
+								{date.from.toLocaleDateString()} - {date.to.toLocaleDateString()}
+							</p>
+						)
+					}
+				</div>
+			</div>
+
+			<div class="h-96 overflow-hidden rounded-md border-2 border-amber-300 bg-amber-100 p-2 md:h-auto md:flex-1">
+				<h2 class="mb-2 font-header text-2xl font-bold uppercase">
+					<Icon class="mr-1 inline h-6" name="ic:baseline-map" />
+					<span>Mapa</span>
+				</h2>
+				<iframe class="h-full w-full" src={`https://maps.google.com/maps?q=${geo.lat},${geo.lng}&hl=es&z=14&amp;output=embed`}></iframe>
+			</div>
+		</div>
+	</div>
+
+	<hr class="my-10" />
+
+	<div class="prose mx-auto">
+		<slot />
+	</div>
+</Layout>

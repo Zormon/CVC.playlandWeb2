@@ -1,0 +1,34 @@
+---
+import Layout from '@src/layouts/SectionLayout.astro'
+
+import { getCollection } from 'astro:content'
+import Album from '@components/fotos/Album.astro'
+
+const eventsCollection = await getCollection('eventos')
+const events = eventsCollection.sort((a, b) => {
+	if (a.data.date.from > b.data.date.from) return -1
+	if (a.data.date.from < b.data.date.from) return 1
+	return 0
+})
+---
+
+<Layout lang="es" title="Galerías de fotos">
+	<h1 class="brush-orange mb-16 mt-6 font-header text-4xl font-bold uppercase">Fotos</h1>
+
+	<ul class="grid-flow-cols mx-4 grid grid-cols-1 justify-center gap-3 md:grid-cols-2 lg:grid-cols-3">
+		{
+			events.map((ev) => (
+				<li>
+					<Album
+						title={ev.data.title}
+						slug={ev.slug}
+						img={import(`../img/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webp`)}
+						location={ev.data.location}
+						date={ev.data.date}
+						color={ev.data.color}
+					/>
+				</li>
+			))
+		}
+	</ul>
+</Layout>

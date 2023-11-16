@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon'
+const year = new Date().getFullYear()
+---
+
+<footer class="flex flex-col items-center justify-between gap-2 bg-sky-700 p-6 text-white md:flex-row">
+	<span class="text-lg">Playland Gran Canaria {year}</span>
+	<nav class="flex flex-row gap-4">
+		<a title="Correo electrónico" href="mailto:Info@playlandgrancanaria.com">
+			<Icon class="h-12 transition-transform hover:scale-125" name="ic:round-mail" />
+		</a>
+		<a title="Facebook" href="https://www.facebook.com/Playlandgrancanaria">
+			<Icon class="h-12 transition-transform hover:scale-125" name="uil:facebook" />
+		</a>
+		<a title="Instagram" href="https://www.instagram.com/playlandgrancanaria">
+			<Icon class="h-12 transition-transform hover:scale-125" name="ri:instagram-fill" />
+		</a>
+		<a title="Youtube" href="https://www.youtube.com/@playlandgrancanaria5885">
+			<Icon class="h-12 transition-transform hover:scale-125" name="ri:youtube-fill" />
+		</a>
+	</nav>
+</footer>
+
+<style lang="scss">
+	footer {
+		position: relative;
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			left: 0em;
+		}
+
+		&::before {
+			top: -3em;
+			height: 3.1rem;
+			@apply bg-sky-500;
+			clip-path: ellipse(55% 100% at center 130%);
+		}
+		&::after {
+			top: -2rem;
+			height: 2.2rem;
+			@apply bg-sky-700;
+			clip-path: ellipse(55% 100% at center 130%);
+		}
+	}
+</style>

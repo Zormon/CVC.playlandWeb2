@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content'
+import EvPage from '@layouts/EventLayout.astro'
+
+export async function getStaticPaths() {
+	const events = await getCollection('eventos')
+	return events.map((ev) => ({
+		params: { slug: ev.slug },
+		props: { ev }
+	}))
+}
+
+const { ev } = Astro.props
+const { Content } = await ev.render()
+
+const img = import(`../../img/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webp`)
+---
+
+<EvPage slug={ev.slug} title={ev.data.title} location={ev.data.location} img={img} date={ev.data.date} geo={ev.data.geo} color={ev.data.color}>
+	<Content />
+</EvPage>

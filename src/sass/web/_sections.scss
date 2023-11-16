@@ -1,0 +1,141 @@
+body {
+    /* *******************************************************************************
+    *************************************  FOTOS  ***********************************
+    ******************************************************************************* */
+
+    .galleryList {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+        justify-content: center;
+
+        @media (min-width: $device-medium) and (max-width: calc($device-large - 1px)) { 
+            grid-template-columns: repeat(auto-fit, 260px);
+        }
+
+        @media (min-width: $device-large) {
+            grid-template-columns: repeat(auto-fit, 360px);
+        }
+
+        > a {
+            color: #fff;
+            text-decoration: none;
+            height: 510px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            > .info {
+                backdrop-filter: blur(6px);
+                text-align: center;
+
+                > h2 { margin: .2em; }
+                > p  { margin: .4em; }
+                
+            }
+            &.red {
+                >.info    { background-color: #{$color-red}d1; }
+            }
+            &.blue {
+                >.info    { background-color: #{$color-blue}d1; }
+            }
+            &.pink {
+                >.info    { background-color: #{$color-pink}d1; }
+            }
+            &.green {
+                >.info    { background-color: #{$color-green}d1; }
+            }
+            &.yellow {
+                >.info    { background-color: #{$color-yellow-dark}d1; }
+            }
+            &.orange {
+                >.info    { background-color: #{$color-orange}d1; }
+            }
+        }
+    }
+
+    .galleryPics {
+        display: grid;
+        gap: 2px;
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (min-width: $device-medium) and (max-width: calc($device-large - 1px)) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: $device-large) {
+            grid-template-columns: repeat(4, 1fr);
+        } 
+
+        & > img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            aspect-ratio: 1;
+            transition: filter .3s;
+            cursor: zoom-in;
+            position: relative;
+
+            border: 10px solid transparent;
+            border-image-slice: 10;
+            box-sizing: border-box;
+
+            &:nth-child(6n+0)     { border-image-source: url(/img/galerias/border_red.webp); }
+            &:nth-child(6n+1)     { border-image-source: url(/img/galerias/border_blue.webp); }
+            &:nth-child(6n+2)     { border-image-source: url(/img/galerias/border_pink.webp); }
+            &:nth-child(6n+3)     { border-image-source: url(/img/galerias/border_green.webp); }
+            &:nth-child(6n+4)     { border-image-source: url(/img/galerias/border_yellow.webp); }
+            &:nth-child(6n+5)     { border-image-source: url(/img/galerias/border_orange.webp); }
+            
+
+            &:hover { filter: brightness(1.3); }
+        }
+    }
+
+    #galleryModal {
+        position: fixed;
+        z-index: 99;
+        background: rgba(0,0,0,.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        visibility: hidden;
+        top: 0; left: 0;
+        cursor: zoom-out;
+
+        &.visible { visibility: visible;}
+
+        > img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+
+    /* *******************************************************************************
+    *************************************  EVENTOS  ************************************
+    ******************************************************************************* */
+    &#eventos {
+        form.equiposForm { 
+            border-color: inherit; 
+        }
+
+        .checkList { 
+            border-color: inherit; 
+
+            label { border-color: inherit;}
+
+            label:not(:last-child) { 
+                border-bottom-width: 1px;
+                border-bottom-style: dotted;
+            }
+
+        }
+    }
+}

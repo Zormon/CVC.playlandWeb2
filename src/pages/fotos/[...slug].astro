@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@src/layouts/SectionLayout.astro'
+import Icon from 'astro-icon'
+import fg from 'fast-glob'
+
+export async function getStaticPaths() {
+	const events = await getCollection('eventos')
+	return events.map((ev) => ({
+		params: { slug: ev.slug },
+		props: { ev }
+	}))
+}
+
+const { ev } = Astro.props
+const { date, location, title, color } = ev.data
+
+const files = fg.sync('public/img/galerias/**/*.webp')
+const photos = files.filter((file) => {
+	return ev.slug === file.split('/img/galerias/').pop()?.split('/').slice(0, -1).join('/')
+})
+---
+
+<Layout lang="es" title={title + ' - Fotos'}>
+	<h1 transition:name={`title-${title}`} class:list={['mb-10 mt-6 font-header text-4xl font-bold uppercase', `brush-${color}`]}>{title}</h1>
+	<div class="mx-auto mb-8 grid w-full grid-cols-2 gap-4 lg:w-1/2">
+		<div transition:name={`location-${title}`} class="flex-1 rounded-md border-2 border-lime-300 bg-lime-100 p-2">
+			<h2 class="mb-2 font-header text-2xl font-bold uppercase">
+				<Icon class="mr-1 inline h-6" name="mdi:location" />
+				<span>Lugar</span>
+			</h2>
+			<p>{location}</p>
+		</div>
+
+		<div transition:name={`date-${title}`} class="flex-1 rounded-md border-2 border-cyan-300 bg-cyan-100 p-2">
+			<h2 class="mb-2 font-header text-2xl font-bold uppercase">
+				<Icon class="mr-1 inline h-6" name="ic:baseline-date-range" />
+				<span>Fecha</span>
+			</h2>
+			{
+				date.from.toLocaleDateString() === date.to.toLocaleDateString() ? (
+					<p>{date.from.toLocaleDateString()}</p>
+				) : (
+					<p>
+						{date.from.toLocaleDateString()} - {date.to.toLocaleDateString()}
+					</p>
+				)
+			}
+		</div>
+	</div>
+
+	<div class="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
+		{photos.length === 0 ? <h1 class="text-4xl font-bold uppercase">No hay fotos</h1> : ''}
+		{photos.map((pic) => <img src={pic.replace('public/', '/')} />)}
+	</div>
+</Layout>
+
+{/*photos.map(({ default: photo }) => <Picture src={photo} alt={photo.src} formats={['avif', 'webp']} />)*/}

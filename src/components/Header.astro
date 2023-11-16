@@ -1,0 +1,33 @@
+---
+import '@fontsource-variable/oswald'
+import '@fontsource-variable/caveat'
+import type { Items } from '@components/NavMenu.svelte'
+const navCurrent = Astro.url.pathname.split('/')[1]
+
+import MainMenu from '@components/NavMenu.svelte'
+const menuItems: Items[] = [
+	{ label: 'Portada', link: '/', color: 'blue' },
+	{ label: 'Sobre Playland', link: '/sobre-playland', color: 'green' },
+	{ label: 'Warrior Race', link: 'https://warriorrace.es', color: 'black' },
+	{ label: 'Eventos', link: '/eventos', color: 'orange' },
+	{ label: 'Fotos', link: '/fotos', color: 'pink' }
+]
+---
+
+<header class="sticky top-0 z-10 flex h-20 flex-row items-center justify-between bg-white">
+	<MainMenu items={menuItems} current={'/' + navCurrent} mobileBreakpoint={840} client:only="svelte" />
+	<img class="m-4 h-16" src="/img/playlandLogo.webp" alt="Playland Logo" />
+	<hr class="colorLines" />
+</header>
+
+<style>
+	hr {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		border: none;
+		height: 5px;
+		background: linear-gradient(to right, #ff2798, #8de500, #0090e3, #ffd822, #fd1521, #ff912c);
+	}
+</style>

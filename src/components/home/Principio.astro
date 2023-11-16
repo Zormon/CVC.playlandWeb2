@@ -1,0 +1,19 @@
+---
+import type { Color } from '@src/types.d'
+import { twColorUtils as colors } from '@src/types.d'
+import SvgIcon from '@src/components/SvgIcon.astro'
+
+interface Props {
+	title: string
+	color: Color
+	icon: string
+}
+
+const { title, color, icon } = Astro.props
+const iconSize = 140
+---
+
+<div class:list={['flex h-48 flex-col justify-center text-center text-white', colors[color].bgDark]}>
+	<SvgIcon name={icon} size={iconSize} />
+	<p class="font-header uppercase">{title}</p>
+</div>

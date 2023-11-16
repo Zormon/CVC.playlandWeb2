@@ -1,0 +1,21 @@
+---
+interface Props {
+	title: string
+	url: string
+	colors: string[]
+	img: string
+}
+
+const { title, url, colors, img } = Astro.props
+---
+
+<figure class:list={['s12 m6 l4 imgBlock', colors[0]]}>
+	<img src={`/img/home/destacados/${img}.webp`} alt={title} />
+	<div class="info slideUp">
+		<h1 class="font-bold">{title}</h1>
+		<div class="reveal">
+			<slot />
+			<a class:list={['flashButton', colors[1]]} href={`/sobre-playland/${url}`}>Saber más</a>
+		</div>
+	</div>
+</figure>

@@ -1,0 +1,29 @@
+---
+
+---
+
+<section class="relative flex h-80 items-center justify-center overflow-hidden bg-pink-50 pb-10 text-white after:bg-pink-50 md:h-96">
+	<video class="absolute min-h-full min-w-full object-cover" src="/videos/home.webm" muted autoplay loop></video>
+
+	<div class="rounded-xl px-16 py-10 text-center backdrop-blur-md backdrop-brightness-75">
+		<h1 class="mb-8 font-header text-4xl uppercase md:text-5xl">¡Próximo evento!</h1>
+		<a class="flashButton red" href="https://warriorrace.es">Warrior Race</a>
+	</div>
+</section>
+
+<style lang="scss">
+	section::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 4rem;
+		z-index: 1;
+
+		mask-image: url(/img/home/slideshowMask.webp);
+		mask-size: auto 100%;
+		mask-repeat: repeat-x;
+		mask-position: bottom;
+	}
+</style>

@@ -1,0 +1,57 @@
+---
+interface Props {
+	gallery?: boolean
+	slug: string
+	title: string
+	date: {
+		from: Date
+		to: Date
+	}
+	geo: {
+		lat: number
+		lng: number
+	}
+	location: string
+}
+
+import Icon from 'astro-icon'
+
+const { gallery, slug, title, date, geo, location } = Astro.props
+
+const from = date.from.toLocaleDateString()
+const to = date.to.toLocaleDateString()
+const dateString = from === to ? from : `${from} - ${to}`
+const mapUrl = `https://maps.google.com/maps?q=${geo.lat},${geo.lng}&hl=es&z=14&amp`
+---
+
+<div class="flex flex-row gap-4">
+	{
+		!!gallery ? (
+			<a class="mx-auto rounded-lg bg-pink-700 p-4 text-center text-white transition hover:scale-110 hover:shadow-lg" href={`/fotos/${slug}`}>
+				<Icon class="mb-1" name="ic:baseline-camera" />
+				<span>Fotos</span>
+			</a>
+		) : (
+			<a class="mx-auto rounded-lg bg-cyan-700 p-4 text-center text-white transition hover:scale-110 hover:shadow-lg" href={`/eventos/${slug}`}>
+				<Icon class="mb-1 h-11" name="ic:baseline-info" />
+				<span>Info</span>
+			</a>
+		)
+	}
+
+	<a transition:name={`evMap-${title}`} class="mx-auto rounded-lg bg-amber-700 p-4 text-white transition hover:scale-110 hover:shadow-lg" href={mapUrl}>
+		<Icon class="mb-1" name="ic:baseline-map" />
+		<span>Mapa</span>
+	</a>
+
+	<div transition:name={`evInfo-${title}`} class="flex-1">
+		<div transition:name={`date-${title}`} class="mb-2 rounded-md border-2 border-cyan-300 bg-cyan-100 p-1">
+			<p class="ml-2"><Icon class="mr-2 inline h-5" name="mdi:calendar" /><em class="font-bold">Fecha</em></p>
+			<p class="ml-2">{dateString}</p>
+		</div>
+		<div transition:name={`location-${title}`} class="rounded-md border-2 border-lime-300 bg-lime-100 p-1">
+			<p class="ml-2"><Icon class="mr-2 inline h-5" name="mdi:location" /> <em class="font-bold">Lugar</em></p>
+			<p class="ml-2">{location}</p>
+		</div>
+	</div>
+</div>

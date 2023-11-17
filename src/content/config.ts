@@ -9,8 +9,8 @@ const eventos = defineCollection({
       link: z.string().url().optional(),
       location: z.string(),
       geo: z.object({
-        lat: z.number().nullable(),
-        lng: z.number().nullable(),
+        lat: z.number(),
+        lng: z.number(),
       }),
       date: z.object({
         from: z.date(),

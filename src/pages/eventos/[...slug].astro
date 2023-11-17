@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
-import EvPage from '@layouts/EventLayout.astro'
+import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
+import Layout from '@layouts/SectionLayout.astro'
+import EventInfo from '@components/events/EvInfoBlock.astro'
 
 export async function getStaticPaths() {
 	const events = await getCollection('eventos')
@@ -11,11 +14,30 @@ export async function getStaticPaths() {
 }
 
 const { ev } = Astro.props
+const { date, location, title, color, geo } = ev.data
 const { Content } = await ev.render()
 
 const img = import(`../../img/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webp`)
+const video = `/videos/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webm`
 ---
 
-<EvPage slug={ev.slug} title={ev.data.title} location={ev.data.location} img={img} date={ev.data.date} geo={ev.data.geo} color={ev.data.color}>
-	<Content />
-</EvPage>
+<Layout>
+	<h1 transition:name={`title-${title}`} class:list={['mb-12 font-header text-4xl font-bold uppercase', `brush-${color}`]}>{title}</h1>
+
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		<div class="flex justify-center" transition:name={`poster-${title}`}><Picture width={400} src={img} alt={title} formats={['avif', 'webp']} /></div>
+		<div class="flex flex-col gap-4">
+			<EventInfo gallery slug={ev.slug} title={title} location={location} date={date} geo={geo} />
+
+			<div class="h-96 overflow-hidden rounded-md border-2 border-amber-300 bg-amber-100 p-2 md:h-auto">
+				<video class="h-full w-full" controls src={video}></video>
+			</div>
+		</div>
+	</div>
+
+	<hr class="my-10" />
+
+	<div class="prose mx-auto">
+		<Content />
+	</div>
+</Layout>

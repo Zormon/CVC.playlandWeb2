@@ -20,7 +20,12 @@ const events = eventsCollection.sort((a, b) => {
 			events.map((ev) => (
 				<li>
 					<a transition:name={`poster-${ev.data.title}`} href={`/eventos/${ev.slug}`}>
-						<Picture src={import(`../img/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webp`)} alt={ev.data.title} formats={['avif', 'webp']} />
+						<Picture
+							width={250}
+							src={import(`../img/eventos/${ev.slug.split('/')[0]}/${ev.slug.split('/').pop()}.webp`)}
+							alt={ev.data.title}
+							formats={['avif', 'webp']}
+						/>
 					</a>
 				</li>
 			))

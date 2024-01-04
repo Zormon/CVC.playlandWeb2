@@ -1,0 +1,146 @@
+---
+import Layout from '@src/layouts/SectionLayout.astro'
+import Block from '@src/components/ContentBlock.astro'
+
+const pics:{[index:string]:any} ={}
+await Astro.glob('../img/alquiler/*.webp').then((files) => {
+    files.forEach((file) => {
+        const name = file.default.src.split(".")[0].split("/").pop()
+        pics[name]=file.default
+    });
+});
+
+---
+
+<Layout lang="es" title="Servicios de alquiler">
+	<h1 class="brush-yellow mb-16 font-header text-4xl font-bold uppercase">Servicios de alquiler</h1>
+
+	<div class="prose mx-auto">
+		<p class="mb-4">Todos necesitamos un momento de ocio, de descanso de la rutina, de dejar a un lado los dispositivos electrónicos y disfrutar de la vida junto con la familia y seres que amamos.</p>
+		<p class="mb-4">Por eso si estas organizando un evento o fiesta, y quieres diversión al máximo, en Playland podemos encargarnos de ello. Contamos con entretenimiento variado para todas las edades, incluso para los más pequeños de la casa.</p>
+		<p class="mb-4">Entre las atracciones más destacables se encuentra el divertido cañón de espuma, hinchables para todas las edades, actividades deportivas, pantallas y sonidos.</p>
+		<p class="mb-4">Tenemos todo lo necesario para que sea un acontecimiento especial para ti y para todos tus invitados. Donde lo más importante será la unión familiar y crear momentos inolvidables.</p>
+		<p class="mb-4">Somos un equipo responsable y dedicado a ofrecer entretenimiento para familias o amigos, y además nos caracterizamos por tomar todas las medidas de seguridad oportunas.</p>
+		<p class="mb-4">Si te interesa conocer más detalles sobre cada una de nuestras atracciones, sigue leyendo la información y contáctanos.</p>
+		<p class="mb-8"><strong>¡Haz de tu evento o fiesta un momento perfecto, donde la diversión no vaya a parar!</strong></p>
+	</div>
+
+	<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+		<li>
+			<Block rounded title="Estructura" color="blue" img={pics['estructura']}>
+				<p>En Playland, queremos ser cómplices en que tus eventos sean de otro nivel y que después de asistir todos queden comentando lo bien que se lo pasaron.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Escenario" color="pink" img={pics['escenario']}>
+				<p>En Playland, queremos ser cómplices en que tus eventos sean de otro nivel y que después de asistir todos queden comentando lo bien que se lo pasaron.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Pantallas LED" color="green" img={pics['led']}>
+				<p>Las pantallas LED tienen un papel fundamental para la ambientación del evento o fiesta, estas pantallas se pueden adaptar al entorno, sea que se trate</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Sonido" color="yellow" img={pics['sonido']}>
+				<p>Este aspecto es fundamental cuando se trata de la organización de un evento o fiesta. Un buen sonido hace una gran diferencia.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Pista americana" color="red" img={pics['americana']}>
+				<p>Para una mayor diversión cuentas con esta súper atracción donde encuentras diferentes desafíos y debes mostrar todas tus habilidades y lograr alcanzar la meta.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Cancha de baloncesto" color="blue" img={pics['baloncesto']}>
+				<p>Si tienes una fiesta, una atracción hinchable no puede faltar para que sea inolvidable. Por eso en Playland tenemos muchas que ofrecerte para que disfrutes al máximo tu día.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="La barredora" color="pink" img={pics['barredora']}>
+				<p>Si te gusta la idea de mantener el equilibrio y liberar mucha adrenalina. La barredora es el hinchable ideal.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Desafío de saltos" color="green" img={pics['saltos']}>
+				<p>El compartir en familia siempre es necesario, y en este caso no será la excepción ya que el desafío suele ser en equipo, por lo que pueden ser formados entre padres e hijos y que mejor forma de pasarlo bien en familia que con esta atracción.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Ludoteca" color="yellow" img={pics['ludoteca']}>
+				<p>Con Playland ningún miembro de la familia dejará de divertirse, hasta los más pequeños pueden tener su propio espacio.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Diana gigante" color="red" img={pics['diana']}>
+				<p>Si quieres divertirte en grande con nuestra diana gigante lo conseguirás. Mide 5 metros de alto por 4 metros de ancho y es una de las atracciones preferidas por muchos, ya que lograr tener la mejor puntería no es necesariamente fácil.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Futbolín humano" color="blue" img={pics['futbolin']}>
+				<p>En Playland buscamos que sorprendas a todos tus invitados con esta divertida atracción, donde todos se lo pasarán en grande.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Obstáculo de equilibrio y agua" color="pink" img={pics['equilibrio']}>
+				<p>Este grandioso juego retará al equilibrio, destreza, flexibilidad y coordinación motriz de cada participante</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Monkey bars y cuba de agua" color="green" img={pics['monkey']}>
+				<p>El Monkey Bars más Cuba de agua un nombre interesante ¿no? Pues se trata de una piscina hinchable rectangular con las dimensiones de 2 metros de ancho por 8 metros de largo.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Piscina de espuma y bolas" color="yellow" img={pics['espuma']}>
+				<p>En Playland nos encanta que puedan disfrutar del evento, por ello contamos con un juego muy atrayente este es divertido y refrescante a la vez, donde todos pueden participar.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Campanazo de meta" color="red" img={pics['campanazo']}>
+				<p>Llegar a la meta en un juego puede tener sus dificultades y este no será la excepción, pondrá a prueba el equilibrio, agilidad, concentración y coordinación de cada participante.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Muro de cuerda" color="blue" img={pics['muro']}>
+				<p>Si eres de los que le gustan los desafíos extremos donde debes esforzarte al máximo por ser el campeón, el Muro de Cuerda sin duda alguna te gustara.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Carga de sacos" color="pink" img={pics['carga_sacos']}>
+				<p>Es uno de los juegos más conocidos en todo el mundo, para su desarrollo solo es necesario un saco por participante y un espacio para poder desplazarse y listo, todos a divertirse.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Carrera de ruedas" color="green" img={pics['ruedas']}>
+				<p>En la carrera de ruedas los obstáculos serán una serie de neumáticos de colores, los cuales se encontrarán colocados en dos líneas. La actividad consistirá en introducir los pies de manera rápida y saltando en el espacio que queda en su interior.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Salto de vallas" color="yellow" img={pics['vallas']}>
+				<p>Si eres de los que le gusta el entrenamiento fuerte, el salto de vallas cumplirá con tus expectativas.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Telaraña" color="red" img={pics['telarana']}>
+				<p>Con este juego seguro te enredarás en la diversión, ya que cuenta con una estructura de aluminio en forma de cubo con las dimensiones de 5 metros de ancho por 4 metros de largo y 2 metros de alto. Pero eso no es todo, contiene elásticos que se entrelazan de un lado a otro formando así una especie de telaraña.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Carrera de sacos" color="pink" img={pics['carrera_sacos']}>
+				<p>Este juego no se trata de simplemente cargar unos sacos, la realidad es que se hace más divertido cuando debes hacerlo en un tiempo limitado. Ya puedes demostrar tu fuerza y resistencia con este juego.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Tabla de surf" color="green" img={pics['tabla_surf']}>
+				<p>En nuestra Tabla de Surf el participante deberá mantener el equilibrio encima de ella, tal como lo haría un verdadero surfista sobre las olas. El equilibrio es fundamental en esta atracción ya que quien logre mantenerse por más tiempo de pie será el gran ganador.</p>
+			</Block>
+		</li>
+		<li>
+			<Block rounded title="Circuito de carreras" color="yellow" img={pics['circuito']}>
+				<p>Si eres un aficionado del deporte y quieres emplear este tema en tu fiesta o evento, pero que sea de una manera divertida para el disfrute de todos tus invitados, la mejor opción será el Circuito de Carreras.</p>
+			</Block>
+		</li>
+	</ul>
+	
+</Layout>

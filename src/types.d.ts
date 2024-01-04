@@ -4,15 +4,15 @@ export const ColorSchema = z.enum(['neutral', 'red', 'blue', 'green', 'yellow', 
 export type Color = z.infer<typeof ColorSchema>;
 
 export const twColorUtils = {
-    neutral: { bg: 'bg-neutral-50', bgDark: 'bg-neutral-600', text: 'text-white', textDark: 'text-neutral-800' },
-    red: { bg: 'bg-red-50', bgDark: 'bg-red-600',           text: 'text-white', textDark: 'text-red-800' },
-    blue: { bg: 'bg-blue-50', bgDark: 'bg-blue-600',        text: 'text-white', textDark: 'text-blue-800' },
-    green: { bg: 'bg-green-50', bgDark: 'bg-green-600',     text: 'text-white', textDark: 'text-green-800' },
-    yellow: { bg: 'bg-yellow-50', bgDark: 'bg-yellow-600', text: 'text-white', textDark: 'text-yellow-800' },
-    orange: { bg: 'bg-orange-50', bgDark: 'bg-orange-600', text: 'text-white', textDark: 'text-orange-800' },
-    pink: { bg: 'bg-pink-50', bgDark: 'bg-pink-600',    text: 'text-white', textDark: 'text-pink-800' },
-    white: { bg: 'bg-white', bgDark: 'bg-white',        text: 'text-black', textDark: 'text-black' },
-    black: { bg: 'bg-black', bgDark: 'bg-black',        text: 'text-white', textDark: 'text-white' }
+    neutral: { bg: 'bg-neutral-50', bgDark: 'bg-neutral-600', text: 'text-white', textDark: 'text-neutral-800', border: 'border-neutral-600' },
+    red: { bg: 'bg-red-50', bgDark: 'bg-red-600', text: 'text-white', textDark: 'text-red-800', border: 'border-red-600' },
+    blue: { bg: 'bg-blue-50', bgDark: 'bg-blue-600', text: 'text-white', textDark: 'text-blue-800', border: 'border-blue-600' },
+    green: { bg: 'bg-green-50', bgDark: 'bg-green-600', text: 'text-white', textDark: 'text-green-800', border: 'border-green-600' },
+    yellow: { bg: 'bg-yellow-50', bgDark: 'bg-yellow-600', text: 'text-white', textDark: 'text-yellow-800', border: 'border-yellow-600' },
+    orange: { bg: 'bg-orange-50', bgDark: 'bg-orange-600', text: 'text-white', textDark: 'text-orange-800', border: 'border-orange-600' },
+    pink: { bg: 'bg-pink-50', bgDark: 'bg-pink-600', text: 'text-white', textDark: 'text-pink-800', border: 'border-pink-600' },
+    white: { bg: 'bg-white', bgDark: 'bg-white', text: 'text-black', textDark: 'text-black', border: 'border-black' },
+    black: { bg: 'bg-black', bgDark: 'bg-black', text: 'text-white', textDark: 'text-white', border: 'border-white' }
 }
 
 export const hexColors = {

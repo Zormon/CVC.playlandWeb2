@@ -8,6 +8,10 @@ interface Props {
 	img?: ImageMetadata | null
 	color?: Color
 	clean?: boolean
+	action?: {
+		text: string
+		link: string
+	}
 }
 
 const { title, color = 'white', img = null, clean = false } = Astro.props

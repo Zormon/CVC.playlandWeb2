@@ -59,9 +59,9 @@
     <div class={(isMobile? mobileClass : desktopClass) + (!isOpen&&isMobile? ' hidden' : '')}>
         {#each items as item}
             {#if item.link != current}
-                <a class={'mx-2 text-white rounded-md py-1 px-2 inline-block hover:scale-110 '+bgs[item.color]} href={item.link}>{item.label}</a>
+                <a class={'mx-2 text-white rounded-md py-1 px-2 inline-block leading-tight hover:scale-110 '+bgs[item.color]} href={item.link}>{item.label}</a>
             {:else}
-                <span class={'mx-2 text-white rounded-md py-1 px-2 inline-block scale-110 ring-2 ring-offset-2 ring-yellow-500 '+bgs[item.color]}>{item.label}</span>
+                <span class={'mx-2 text-white rounded-md py-1 px-2 inline-block leading-tight scale-110 ring-2 ring-offset-2 ring-yellow-500 '+bgs[item.color]}>{item.label}</span>
             {/if}
         {/each}
     </div>

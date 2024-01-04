@@ -1,0 +1,14 @@
+---
+import type { Color } from '@src/types.d'
+
+interface Props {
+	class?: string
+	text: string
+	link: string
+	color: Color
+}
+
+const { class:classes, text, link, color } = Astro.props
+---
+
+<a href={link} class:list={['flashButton', color, classes]}>{text}</a>

@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '@src/layouts/SectionLayout.astro'
-import Icon from 'astro-icon'
 import fg from 'fast-glob'
 import EventInfo from '@components/events/EvInfoBlock.astro'
 
@@ -16,9 +15,16 @@ export async function getStaticPaths() {
 const { ev } = Astro.props
 const { date, location, title, color, geo } = ev.data
 
-const files = fg.sync('public/img/galerias/**/*.webp')
-const photos = files.filter((file) => {
-	return ev.slug === file.split('/img/galerias/').pop()?.split('/').slice(0, -1).join('/')
+let photos = fg.sync(`public/img/galerias/${ev.slug}/*.webp`)
+photos = photos.map((pic) => {
+	const img = pic.replace('public/', '/')
+	const path = img.split('/').slice(0, -1).join('/')
+	const filename = img.split('/').pop()
+
+	return {
+		full: `${path}/${filename}`,
+		thumb: `${path}/thumbs/${filename}`
+	}
 })
 ---
 
@@ -31,6 +37,6 @@ const photos = files.filter((file) => {
 
 	<div class="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
 		{photos.length === 0 ? <h1 class="text-4xl font-bold uppercase">No hay fotos</h1> : ''}
-		{photos.map((pic) => <img src={pic.replace('public/', '/')} />)}
+		{photos.map((pic) => <a href={pic.full}><img src={pic.full} /></a>)}
 	</div>
 </Layout>

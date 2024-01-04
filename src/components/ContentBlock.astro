@@ -1,0 +1,30 @@
+---
+import type { Color } from '@src/types.d'
+import { twColorUtils as colors } from '@src/types.d'
+import { Picture } from 'astro:assets'
+import Button from '@components/FlashButton.astro'
+
+interface Props {
+	title: string
+	img?: ImageMetadata | null
+	color?: Color
+	action?: {
+		text: string
+		link: string
+	}
+	rounded?: boolean
+}
+
+const { title, color = 'white', img = null, action = null, rounded = false } = Astro.props
+const tone = colors[color]
+---
+
+<div class:list={["border-2 h-full", tone.border, tone.bg, rounded? 'rounded-lg':'']}>
+	<h1 class:list={['p-4 text-center font-header text-3xl uppercase', [tone.bgDark, tone.text]]}>{title}</h1>
+	{ img && ( <div><Picture src={img} alt={'Portada ' + title} formats={['avif', 'webp']} /></div> ) }
+	<div class:list={['p-6']}>
+		<slot />
+
+		{ action && ( <Button class="mt-8 mx-auto block" link={action.link} text={action.text} color={color} /> ) }
+	</div>
+</div>
